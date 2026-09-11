@@ -41,7 +41,7 @@ export const DIMENSION_COMPARISONS: DimensionComparison[] = [
         'Lacks authentic Uruguayan Mohs-7 micro-crystalline geode fissures and depth.',
         'Absence of 2.4MHz acoustic cavitation transducer mechanism and cold micro-mist.'
       ],
-      assetWebp: '/assets/zero-shot/d1-ai-image-zeroshot.webp',
+      assetWebp: './assets/zero-shot/d1-ai-image-zeroshot.webp',
       caption: 'Baseline: Unconstrained 2D fantasy rock floating in generic void'
     },
     fewShot: {
@@ -58,7 +58,7 @@ export const DIMENSION_COMPARISONS: DimensionComparison[] = [
         'Aerosol': 'Ultrasonic Cold Micro-Mist, d32 = 3.2 µm',
         'Optics': '2200K Circadian LED backlight, obsidian slab'
       },
-      assetWebp: '/assets/few-shot/d1-ai-image-fewshot.webp',
+      assetWebp: './assets/few-shot/d1-ai-image-fewshot.webp',
       caption: 'Few-Shot: Production-ready cyber-physical luxury hardware render'
     },
     comparisonStrip: {
@@ -84,7 +84,7 @@ export const DIMENSION_COMPARISONS: DimensionComparison[] = [
         'Zero thermodynamic, temporal, or atmospheric fluid dispersion principles.',
         'Completely useless for modeling therapeutic vapor concentration at executive desks.'
       ],
-      assetWebp: '/assets/zero-shot/d2-desmos-zeroshot.webp',
+      assetWebp: './assets/zero-shot/d2-desmos-zeroshot.webp',
       caption: 'Baseline: Static 2D circle equation without physical variables'
     },
     fewShot: {
@@ -101,7 +101,7 @@ export const DIMENSION_COMPARISONS: DimensionComparison[] = [
         'Emission Rate': 'M = 120 mg/hr ultrasonic vaporization',
         'Target Plateau': 'C_desk = 18.4 µg/m³ at r = 1.2 m'
       },
-      assetWebp: '/assets/few-shot/d2-desmos-fewshot.webp',
+      assetWebp: './assets/few-shot/d2-desmos-fewshot.webp',
       caption: 'Few-Shot: Rigorous 3D spatial-temporal aerosol concentration curve'
     },
     comparisonStrip: {
@@ -127,7 +127,7 @@ export const DIMENSION_COMPARISONS: DimensionComparison[] = [
         'No micro-controller logic, transducer driving circuit, or fluid level telemetry.',
         'Zero thermal runaway safeguards, dry-burn protection, or sensor feedback loops.'
       ],
-      assetWebp: '/assets/zero-shot/d3-mermaid-zeroshot.webp',
+      assetWebp: './assets/zero-shot/d3-mermaid-zeroshot.webp',
       caption: 'Baseline: Naive 3-box linear chain with zero edge controls'
     },
     fewShot: {
@@ -144,7 +144,7 @@ export const DIMENSION_COMPARISONS: DimensionComparison[] = [
         'Actuation': '2.4MHz Piezoelectric Ultrasonic Transducer',
         'Fail-Safes': 'Hardware interrupt dry-burn protection (<5ms)'
       },
-      assetWebp: '/assets/few-shot/d3-mermaid-fewshot.webp',
+      assetWebp: './assets/few-shot/d3-mermaid-fewshot.webp',
       caption: 'Few-Shot: Fault-tolerant closed-loop cyber-physical architecture'
     },
     comparisonStrip: {
@@ -170,7 +170,7 @@ export const DIMENSION_COMPARISONS: DimensionComparison[] = [
         'Unsubstantiated esoteric claims regarding "healing amethyst vibrations" without clinical data.',
         'Zero mathematical equations, pharmacokinetic tables, or IEEE BibTeX references.'
       ],
-      assetWebp: '/assets/zero-shot/d4-latex-zeroshot.webp',
+      assetWebp: './assets/zero-shot/d4-latex-zeroshot.webp',
       caption: 'Baseline: Elementary text snippet without scientific citations'
     },
     fewShot: {
@@ -187,7 +187,7 @@ export const DIMENSION_COMPARISONS: DimensionComparison[] = [
         'EEG Metric': 'Alpha-wave (8-12 Hz) power spectral density increase (+14.2%)',
         'Statistical Sig': 'p = 0.004 with paired Student\'s t-test'
       },
-      assetWebp: '/assets/few-shot/d4-latex-fewshot.webp',
+      assetWebp: './assets/few-shot/d4-latex-fewshot.webp',
       caption: 'Few-Shot: Publication-ready IEEE Transactions peer-reviewed paper'
     },
     comparisonStrip: {
@@ -213,7 +213,7 @@ export const DIMENSION_COMPARISONS: DimensionComparison[] = [
         'Complete absence of organic conversational fillers, host disagreements, or acoustic sound design.',
         'Failed to explain the engineering synergy between piezo-cavitation and olfactory receptors.'
       ],
-      assetWebp: '/assets/zero-shot/d5-notebooklm-zeroshot.webp',
+      assetWebp: './assets/zero-shot/d5-notebooklm-zeroshot.webp',
       caption: 'Baseline: Robotic text-to-speech reading raw encyclopedic bullet points'
     },
     fewShot: {
@@ -230,7 +230,7 @@ export const DIMENSION_COMPARISONS: DimensionComparison[] = [
         'Acoustic Design': '24-bit 48kHz audio fidelity with organic pacing',
         'Audience': 'C-level executives, industrial designers & bioengineers'
       },
-      assetWebp: '/assets/few-shot/d5-notebooklm-fewshot.webp',
+      assetWebp: './assets/few-shot/d5-notebooklm-fewshot.webp',
       caption: 'Few-Shot: Studio-grade multi-host investigative podcast deep dive'
     },
     comparisonStrip: {
@@ -256,7 +256,7 @@ export const DIMENSION_COMPARISONS: DimensionComparison[] = [
         'Zero responsive design, state management, or reactive interactivity.',
         'No mathematical model execution, asset optimization, or typography hierarchy.'
       ],
-      assetWebp: '/assets/zero-shot/d6-webapp-zeroshot.webp',
+      assetWebp: './assets/zero-shot/d6-webapp-zeroshot.webp',
       caption: 'Baseline: Static unstyled 1990s HTML table with zero interactivity'
     },
     fewShot: {
@@ -272,7 +272,7 @@ export const DIMENSION_COMPARISONS: DimensionComparison[] = [
         'Engine': 'Real-Time Fickian Dispersion Solver + Web Audio API',
         'Aesthetic': 'Void Obsidian (#050409) + 2200K Sunset Amber CMF'
       },
-      assetWebp: '/assets/few-shot/d6-webapp-fewshot.webp',
+      assetWebp: './assets/few-shot/d6-webapp-fewshot.webp',
       caption: 'Few-Shot: High-end reactive console with 360 drag and Fickian physics'
     },
     comparisonStrip: {
@@ -443,7 +443,7 @@ export default function App() {
             {/* Background Crystal Artifact Imagery on Right */}
             <div className="absolute right-0 top-0 bottom-0 w-full lg:w-3/5 pointer-events-none opacity-40 lg:opacity-75 mix-blend-screen flex items-center justify-end overflow-hidden">
               <img
-                src="/assets/hero-aetheris-artifact.webp"
+                src="./assets/hero-aetheris-artifact.webp"
                 alt="Amethyst Crystal Cluster"
                 className="w-full h-full max-h-[620px] object-contain object-right filter brightness-95 contrast-110 scale-110 lg:scale-125 translate-x-8 lg:translate-x-12"
               />
@@ -806,7 +806,7 @@ export default function App() {
             {/* Quick Action Controls */}
             <div className="flex items-center gap-3 self-start md:self-auto">
               <a
-                href="/presentation.pdf"
+                href="./presentation.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-wider text-neutral-300 hover:text-white bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] hover:border-purple-500/40 transition-all duration-200 flex items-center gap-2"
@@ -816,7 +816,7 @@ export default function App() {
               </a>
 
               <a
-                href="/presentation.pdf"
+                href="./presentation.pdf"
                 download="GE931_Pakamas_Amethyst_Presentation.pdf"
                 className="px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-wider text-black bg-white hover:bg-neutral-200 font-semibold transition-all duration-200 flex items-center gap-2 shadow-[0_0_15px_rgba(255,255,255,0.2)]"
               >
@@ -845,7 +845,7 @@ export default function App() {
             {/* Embedded Widescreen PDF Frame */}
             <div className="w-full bg-[#050409]">
               <iframe
-                src="/presentation.pdf#toolbar=1&navpanes=0"
+                src="./presentation.pdf#toolbar=1&navpanes=0"
                 title="AETHERIS Course Presentation PDF"
                 className="w-full h-[620px] sm:h-[720px] lg:h-[820px] border-0"
               />
@@ -855,7 +855,7 @@ export default function App() {
             <div className="px-6 py-3 bg-[#0c0916] border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] font-mono text-neutral-400">
               <span>Interactive PDF Slide Viewer. Use built-in toolbar to zoom and flip slides.</span>
               <a
-                href="/presentation.pdf"
+                href="./presentation.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-purple-300 hover:text-purple-200 underline inline-flex items-center gap-1"
@@ -956,7 +956,7 @@ export default function App() {
               </div>
               <div className="pt-1">
                 <a
-                  href="/presentation.pdf"
+                  href="./presentation.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xs font-mono text-purple-300 hover:text-purple-200 transition-colors flex items-center gap-2"
