@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Space+Grotesk:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@200;300;400;500;600&family=Inter:wght@200;300;400;500&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-void-obsidian: #050409;
+  --bg-deep-obsidian: #0A0812;
+  --bg-surface-tint: #120E1E;
+  --bg-surface-glass: rgba(255, 255, 255, 0.02);
+  --bg-surface-card: rgba(18, 14, 30, 0.4);
+
+  --amethyst-primary: #A855F7;
+  --amethyst-glow: #C084FC;
+  --amethyst-deep: #6B21A8;
+  
+  --alpenglow-2200k: #F59E0B;
+  --alpenglow-amber: #D97706;
+
+  --border-hairline: rgba(255, 255, 255, 0.08);
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-void-obsidian);
+  color: #F8FAFC;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: radial-gradient(circle at 50% 0%, #0D0A18 0%, #050409 65%, #020104 100%);
+  color: #CBD5E1;
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* Custom Architectural Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-void-obsidian);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--amethyst-primary);
+}
+
+/* Typography Utility Classes */
+.font-display { font-family: 'Space Grotesk', -apple-system, sans-serif; }
+.font-serif { font-family: 'Cinzel', Georgia, serif; }
+.font-sans { font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+
+/* Custom Slider Styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 0 16px rgba(192, 132, 252, 0.9), 0 0 6px rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  border: 2px solid var(--amethyst-primary);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.25);
+  background: var(--amethyst-glow);
+}
+
+/* Chiaroscuro Studio Lighting */
+.diffused-radial-backlight {
+  background: radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.18) 0%, rgba(245, 158, 11, 0.08) 40%, transparent 70%);
+  filter: blur(140px);
+}
+
+@keyframes chiaroscuroPulse {
+  0%, 100% {
+    transform: scale(0.98);
+    opacity: 0.65;
+    filter: blur(140px);
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 0.9;
+    filter: blur(120px);
+  }
+}
+
+.animate-chiaroscuro {
+  animation: chiaroscuroPulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.btn-magnetic {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, background-color 0.3s ease;
+}
+.btn-magnetic:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.2);
+}
