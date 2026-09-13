@@ -16,7 +16,10 @@ import {
   ExternalLink,
   FileText,
   Download,
-  Maximize2
+  Maximize2,
+  Eye,
+  X,
+  Play
 } from 'lucide-react';
 import { DimensionComparison } from './types';
 
@@ -351,6 +354,18 @@ export default function App() {
   // 6-Dimension Comparative State
   const [selectedDimIndex, setSelectedDimIndex] = useState<number>(0);
   const [activeDimTab, setActiveDimTab] = useState<'both' | 'zero' | 'few'>('both');
+  const [isPdfViewerLoaded, setIsPdfViewerLoaded] = useState<boolean>(false);
+
+  // Prevent browser auto-focusing on embedded subresources or scrolling to iframe on initial page load
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    // Ensure viewport stays locked at the top hero section on initial visit
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, []);
 
   const currentDim = DIMENSION_COMPARISONS[selectedDimIndex];
 
@@ -404,7 +419,11 @@ export default function App() {
             <a href="#dimensions" className="hover:text-white transition-colors duration-200">
               6 Dimensions
             </a>
-            <a href="#presentation" className="hover:text-purple-300 text-purple-200/90 transition-colors duration-200 flex items-center gap-1.5">
+            <a 
+              href="#presentation" 
+              onClick={() => setIsPdfViewerLoaded(true)}
+              className="hover:text-purple-300 text-purple-200/90 transition-colors duration-200 flex items-center gap-1.5"
+            >
               <FileText className="w-3 h-3 text-purple-400" />
               <span>Presentation PDF</span>
             </a>
@@ -414,6 +433,7 @@ export default function App() {
           <div className="flex items-center gap-3">
             <a
               href="#presentation"
+              onClick={() => setIsPdfViewerLoaded(true)}
               className="group px-4 py-2 rounded-full text-xs font-mono uppercase tracking-wider text-neutral-200 hover:text-white bg-purple-950/40 hover:bg-purple-900/50 border border-purple-500/30 hover:border-purple-400/60 transition-all duration-300 flex items-center gap-2 shadow-[0_0_15px_rgba(168,85,247,0.15)]"
             >
               <FileText className="w-3.5 h-3.5 text-purple-400 group-hover:scale-110 transition-transform" />
@@ -500,6 +520,7 @@ export default function App() {
                     </a>
                     <a
                       href="#presentation"
+                      onClick={() => setIsPdfViewerLoaded(true)}
                       className="px-5 py-2.5 rounded-full text-xs font-mono uppercase tracking-wider text-purple-200 hover:text-white bg-purple-950/40 hover:bg-purple-900/60 border border-purple-500/30 transition-all duration-300 inline-flex items-center gap-2"
                     >
                       <FileText className="w-3.5 h-3.5 text-purple-400" />
@@ -781,7 +802,7 @@ export default function App() {
       </section>
 
       {/* ======================================================================
-          SECTION 03 // PRESENTATION PDF SHOWCASE (CLEAN, NO REDUNDANT TEXT)
+          SECTION 03 // PRESENTATION PDF SHOWCASE (CLICK-TO-LOAD FOR SMOOTH UX)
           ====================================================================== */}
       <section id="presentation" className="py-24 lg:py-32 bg-[#07050e]/80 border-t border-white/[0.06] relative">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
@@ -804,7 +825,25 @@ export default function App() {
             </div>
 
             {/* Quick Action Controls */}
-            <div className="flex items-center gap-3 self-start md:self-auto">
+            <div className="flex flex-wrap items-center gap-3 self-start md:self-auto">
+              {!isPdfViewerLoaded ? (
+                <button
+                  onClick={() => setIsPdfViewerLoaded(true)}
+                  className="px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-wider text-white bg-purple-600 hover:bg-purple-500 font-semibold transition-all duration-200 flex items-center gap-2 shadow-[0_0_20px_rgba(168,85,247,0.35)]"
+                >
+                  <Eye className="w-3.5 h-3.5" />
+                  <span>Load Slide Viewer</span>
+                </button>
+              ) : (
+                <button
+                  onClick={() => setIsPdfViewerLoaded(false)}
+                  className="px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-wider text-neutral-300 hover:text-white bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] transition-all duration-200 flex items-center gap-2"
+                >
+                  <X className="w-3.5 h-3.5 text-purple-400" />
+                  <span>Collapse Viewer</span>
+                </button>
+              )}
+
               <a
                 href="./presentation.pdf"
                 target="_blank"
@@ -826,44 +865,110 @@ export default function App() {
             </div>
           </div>
 
-          {/* Direct Embedded PDF Presentation Viewer */}
+          {/* Interactive Viewer Card (Loaded on demand to prevent focus hijacking) */}
           <div className="relative rounded-3xl overflow-hidden border border-white/[0.08] bg-[#0A0812] shadow-[0_25px_60px_rgba(0,0,0,0.85)]">
             
             {/* Top Minimalist Viewer Status Bar */}
             <div className="px-6 py-3 bg-[#0c0916] border-b border-white/[0.06] flex items-center justify-between text-xs font-mono">
               <div className="flex items-center gap-3 text-neutral-400">
-                <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span className={`w-2 h-2 rounded-full ${isPdfViewerLoaded ? 'bg-emerald-400 animate-pulse' : 'bg-purple-400'}`}></span>
                 <span className="text-purple-300 font-medium">presentation.pdf</span>
                 <span className="hidden sm:inline text-neutral-600">|</span>
-                <span className="hidden sm:inline text-[11px] text-neutral-400">GE931 AI 101 Showcase</span>
+                <span className="hidden sm:inline text-[11px] text-neutral-400">
+                  {isPdfViewerLoaded ? 'Interactive PDF Slide Viewer Active' : '30-Slide Presentation Deck Ready'}
+                </span>
               </div>
               <div className="text-[11px] text-neutral-400 font-mono">
                 Pakamas Kajornsri • 2610717302062
               </div>
             </div>
 
-            {/* Embedded Widescreen PDF Frame */}
-            <div className="w-full bg-[#050409]">
-              <iframe
-                src="./presentation.pdf#toolbar=1&navpanes=0"
-                title="AETHERIS Course Presentation PDF"
-                className="w-full h-[620px] sm:h-[720px] lg:h-[820px] border-0"
-              />
-            </div>
+            {!isPdfViewerLoaded ? (
+              /* High-End Obsidian & Amethyst Presentation Preview Card */
+              <div className="p-8 sm:p-12 lg:p-16 text-center space-y-8 bg-gradient-to-b from-[#0e0a1a] via-[#080611] to-[#050409]">
+                <div className="max-w-2xl mx-auto space-y-4">
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-950/60 border border-purple-500/30 text-purple-300 text-xs font-mono tracking-wider">
+                    <Sparkles className="w-3.5 h-3.5 text-purple-400" />
+                    <span>30 Widescreen 16:9 Slides • Full Curriculum Deck</span>
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-display font-medium text-white">
+                    Executive Defense Presentation Deck
+                  </h3>
+                  <p className="text-xs sm:text-sm text-neutral-400 font-sans font-light leading-relaxed">
+                    Designed for Bangkok University GE931 Introduction to Artificial Intelligence. Covers the entire evolutionary lifecycle across 6 Dimensions × 5 Steps with rigorous mathematical models and cyber-physical engineering.
+                  </p>
+                </div>
 
-            {/* Bottom Fallback Bar */}
-            <div className="px-6 py-3 bg-[#0c0916] border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] font-mono text-neutral-400">
-              <span>Interactive PDF Slide Viewer. Use built-in toolbar to zoom and flip slides.</span>
-              <a
-                href="./presentation.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-purple-300 hover:text-purple-200 underline inline-flex items-center gap-1"
-              >
-                <span>Click here if the PDF does not display directly</span>
-                <ExternalLink className="w-3 h-3" />
-              </a>
-            </div>
+                {/* 6 Dimensions Slide Roadmap Preview Chips */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 max-w-4xl mx-auto text-left">
+                  {DIMENSION_COMPARISONS.map((dim) => (
+                    <div key={dim.id} className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+                      <div className="text-[9px] font-mono text-purple-400">PART 0{dim.number}</div>
+                      <div className="text-xs font-display font-medium text-neutral-200 truncate mt-0.5">{dim.title}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Interactive Trigger CTA */}
+                <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                  <button
+                    onClick={() => setIsPdfViewerLoaded(true)}
+                    className="w-full sm:w-auto px-7 py-3.5 rounded-2xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-mono text-xs uppercase tracking-wider font-semibold shadow-[0_0_30px_rgba(168,85,247,0.35)] flex items-center justify-center gap-2.5 transition-all group"
+                  >
+                    <Play className="w-4 h-4 fill-white group-hover:scale-110 transition-transform" />
+                    <span>Launch Interactive Slide Viewer</span>
+                  </button>
+
+                  <a
+                    href="./presentation.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.08] hover:border-purple-500/40 text-neutral-300 hover:text-white font-mono text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all"
+                  >
+                    <Maximize2 className="w-4 h-4 text-purple-400" />
+                    <span>Open in Dedicated Window</span>
+                  </a>
+                </div>
+
+                <p className="text-[11px] font-mono text-neutral-500">
+                  ⚡ Slide viewer loads on demand so your web page experience remains fast and uninterrupted.
+                </p>
+              </div>
+            ) : (
+              /* Embedded Widescreen PDF Frame */
+              <div>
+                <div className="w-full bg-[#050409]">
+                  <iframe
+                    src="./presentation.pdf#toolbar=1&navpanes=0"
+                    title="AETHERIS Course Presentation PDF"
+                    loading="lazy"
+                    className="w-full h-[620px] sm:h-[720px] lg:h-[820px] border-0"
+                  />
+                </div>
+
+                {/* Bottom Fallback Bar */}
+                <div className="px-6 py-3 bg-[#0c0916] border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] font-mono text-neutral-400">
+                  <span>Interactive PDF Slide Viewer. Use built-in toolbar to zoom and flip slides.</span>
+                  <div className="flex items-center gap-4">
+                    <button
+                      onClick={() => setIsPdfViewerLoaded(false)}
+                      className="text-neutral-400 hover:text-white underline text-[11px]"
+                    >
+                      Close Viewer
+                    </button>
+                    <a
+                      href="./presentation.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-purple-300 hover:text-purple-200 underline inline-flex items-center gap-1"
+                    >
+                      <span>Open in New Window</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )}
 
           </div>
 
